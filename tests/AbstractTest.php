@@ -1,10 +1,10 @@
 <?php
-namespace Ddeboer\Imap\Tests;
+namespace sgoranov\ImapClient\Tests;
 
-use Ddeboer\Imap\Exception\MailboxDoesNotExistException;
-use Ddeboer\Imap\Mailbox;
-use Ddeboer\Imap\Server;
-use Ddeboer\Imap\Connection;
+use sgoranov\ImapClient\Exception\MailboxDoesNotExistException;
+use sgoranov\ImapClient\Mailbox;
+use sgoranov\ImapClient\Server;
+use sgoranov\ImapClient\Connection;
 
 abstract class AbstractTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ddeboer\Imap\Tests;
+namespace sgoranov\ImapClient\Tests;
 
 class ConnectionTest extends AbstractTest
 {
@@ -15,18 +15,18 @@ class ConnectionTest extends AbstractTest
         $this->assertInternalType('array', $mailboxes);
 
         foreach ($mailboxes as $mailbox) {
-            $this->assertInstanceOf('\Ddeboer\Imap\Mailbox', $mailbox);
+            $this->assertInstanceOf('\sgoranov\ImapClient\Mailbox', $mailbox);
         }
     }
 
     public function testGetMailbox()
     {
         $mailbox = static::getConnection()->getMailbox('INBOX');
-        $this->assertInstanceOf('\Ddeboer\Imap\Mailbox', $mailbox);
+        $this->assertInstanceOf('\sgoranov\ImapClient\Mailbox', $mailbox);
     }
 
     /**
-     * @expectedException \Ddeboer\Imap\Exception\MailboxDoesNotExistException
+     * @expectedException \sgoranov\ImapClient\Exception\MailboxDoesNotExistException
      */
     public function testCreateMailbox()
     {
@@ -50,7 +50,7 @@ class ConnectionTest extends AbstractTest
     }
 
     /**
-     * @expectedException \Ddeboer\Imap\Exception\MailboxDoesNotExistException
+     * @expectedException \sgoranov\ImapClient\Exception\MailboxDoesNotExistException
      */
     public function testGetInvalidMailbox()
     {

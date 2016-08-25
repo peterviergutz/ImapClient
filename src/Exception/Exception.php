@@ -1,6 +1,6 @@
 <?php
 
-namespace Ddeboer\Imap\Exception;
+namespace sgoranov\ImapClient\Exception;
 
 class Exception extends \RuntimeException
 {

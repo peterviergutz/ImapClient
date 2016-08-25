@@ -1,5 +1,5 @@
 <?php
-namespace Ddeboer\Imap;
+namespace sgoranov\ImapClient;
 
 abstract class SortExpression
 {

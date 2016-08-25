@@ -1,9 +1,9 @@
 <?php
 
-namespace Ddeboer\Imap\Search\Date;
+namespace sgoranov\ImapClient\Search\Date;
 
 use DateTime;
-use Ddeboer\Imap\Search\AbstractCondition;
+use sgoranov\ImapClient\Search\AbstractCondition;
 
 /**
  * Represents a date condition.

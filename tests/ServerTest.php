@@ -1,13 +1,13 @@
 <?php
 
-namespace Ddeboer\Imap\Tests;
+namespace sgoranov\ImapClient\Tests;
 
-use Ddeboer\Imap\Server;
+use sgoranov\ImapClient\Server;
 
 class ServerTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @expectedException \Ddeboer\Imap\Exception\AuthenticationFailedException
+     * @expectedException \sgoranov\ImapClient\Exception\AuthenticationFailedException
      */
     public function testFailedAuthenticate()
     {

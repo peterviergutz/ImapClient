@@ -1,8 +1,8 @@
 <?php
 
-namespace Ddeboer\Imap\Message;
+namespace sgoranov\ImapClient\Message;
 
-use Ddeboer\Imap\Parameters;
+use sgoranov\ImapClient\Parameters;
 
 /**
  * Collection of message headers

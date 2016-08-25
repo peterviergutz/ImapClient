@@ -1,6 +1,6 @@
 <?php
 
-namespace Ddeboer\Imap\Search\Email;
+namespace sgoranov\ImapClient\Search\Email;
 
 /**
  * Represents a "To" email address condition. Messages must have been addressed

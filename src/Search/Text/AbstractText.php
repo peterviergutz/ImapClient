@@ -1,8 +1,8 @@
 <?php
 
-namespace Ddeboer\Imap\Search\Text;
+namespace sgoranov\ImapClient\Search\Text;
 
-use Ddeboer\Imap\Search\AbstractCondition;
+use sgoranov\ImapClient\Search\AbstractCondition;
 
 /**
  * Represents a text based condition. Text based conditions use a contains

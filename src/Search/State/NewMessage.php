@@ -1,8 +1,8 @@
 <?php
 
-namespace Ddeboer\Imap\Search\State;
+namespace sgoranov\ImapClient\Search\State;
 
-use Ddeboer\Imap\Search\AbstractCondition;
+use sgoranov\ImapClient\Search\AbstractCondition;
 
 /**
  * Represents a NEW condition. Only new messages will match this condition.

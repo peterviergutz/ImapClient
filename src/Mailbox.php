@@ -1,6 +1,6 @@
 <?php
 
-namespace Ddeboer\Imap;
+namespace sgoranov\ImapClient;
 
 /**
  * An IMAP mailbox (commonly referred to as a ‘folder’)

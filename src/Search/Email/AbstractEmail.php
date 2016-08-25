@@ -1,8 +1,8 @@
 <?php
 
-namespace Ddeboer\Imap\Search\Email;
+namespace sgoranov\ImapClient\Search\Email;
 
-use Ddeboer\Imap\Search\AbstractCondition;
+use sgoranov\ImapClient\Search\AbstractCondition;
 
 /**
  * Represents an email condition.

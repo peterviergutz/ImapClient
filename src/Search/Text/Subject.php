@@ -1,6 +1,6 @@
 <?php
 
-namespace Ddeboer\Imap\Search\Text;
+namespace sgoranov\ImapClient\Search\Text;
 
 /**
  * Represents a subject contains condition. Messages must have a subject

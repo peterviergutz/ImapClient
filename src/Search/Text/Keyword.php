@@ -1,6 +1,6 @@
 <?php
 
-namespace Ddeboer\Imap\Search\Text;
+namespace sgoranov\ImapClient\Search\Text;
 
 /**
  * Represents a keyword text contains condition. Messages must have a keyword

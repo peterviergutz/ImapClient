@@ -1,11 +1,11 @@
 <?php
 
-namespace Ddeboer\Imap;
+namespace sgoranov\ImapClient;
 
-use Ddeboer\Imap\Exception\MessageDoesNotExistException;
-use Ddeboer\Imap\Message\EmailAddress;
-use Ddeboer\Imap\Exception\MessageDeleteException;
-use Ddeboer\Imap\Exception\MessageMoveException;
+use sgoranov\ImapClient\Exception\MessageDoesNotExistException;
+use sgoranov\ImapClient\Message\EmailAddress;
+use sgoranov\ImapClient\Exception\MessageDeleteException;
+use sgoranov\ImapClient\Exception\MessageMoveException;
 
 /**
  * An IMAP message (e-mail)

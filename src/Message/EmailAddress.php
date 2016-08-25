@@ -1,6 +1,6 @@
 <?php
 
-namespace Ddeboer\Imap\Message;
+namespace sgoranov\ImapClient\Message;
 
 /**
  * An e-mail address

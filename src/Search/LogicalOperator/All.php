@@ -1,8 +1,8 @@
 <?php
 
-namespace Ddeboer\Imap\Search\LogicalOperator;
+namespace sgoranov\ImapClient\Search\LogicalOperator;
 
-use Ddeboer\Imap\Search\AbstractCondition;
+use sgoranov\ImapClient\Search\AbstractCondition;
 
 /**
  * Represents an ALL operator. Messages must match all conditions following this

@@ -1,7 +1,7 @@
 <?php
-namespace Ddeboer\Imap\Sort;
+namespace sgoranov\ImapClient\Sort;
 
-use Ddeboer\Imap\SortExpression;
+use sgoranov\ImapClient\SortExpression;
 
 class Arrival extends SortExpression
 {

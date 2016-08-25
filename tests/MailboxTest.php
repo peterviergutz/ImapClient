@@ -1,12 +1,12 @@
 <?php
 
-namespace Ddeboer\Imap\Tests;
+namespace sgoranov\ImapClient\Tests;
 
-use Ddeboer\Imap\Mailbox;
-use Ddeboer\Imap\Search\Email\To;
-use Ddeboer\Imap\Search\Text\Body;
-use Ddeboer\Imap\SearchExpression;
-use Ddeboer\Imap\Sort\To as SortTo;
+use sgoranov\ImapClient\Mailbox;
+use sgoranov\ImapClient\Search\Email\To;
+use sgoranov\ImapClient\Search\Text\Body;
+use sgoranov\ImapClient\SearchExpression;
+use sgoranov\ImapClient\Sort\To as SortTo;
 
 class MailboxTest extends AbstractTest
 {
@@ -45,7 +45,7 @@ class MailboxTest extends AbstractTest
     }
 
     /**
-     * @expectedException \Ddeboer\Imap\Exception\MessageDoesNotExistException
+     * @expectedException \sgoranov\ImapClient\Exception\MessageDoesNotExistException
      * @expectedExceptionMessageRegExp /Message 666 does not exist.*Bad message number/
      */
     public function testGetMessageThrowsException()

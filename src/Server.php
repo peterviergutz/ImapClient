@@ -1,8 +1,8 @@
 <?php
 
-namespace Ddeboer\Imap;
+namespace sgoranov\ImapClient;
 
-use Ddeboer\Imap\Exception\AuthenticationFailedException;
+use sgoranov\ImapClient\Exception\AuthenticationFailedException;
 
 /**
  * An IMAP server
