@@ -1,9 +1,13 @@
 {
-    "name": "ddeboer/imap",
+    "name": "sgoranov/imap-client",
     "description": "Object-oriented IMAP for PHP",
     "keywords": [ "email", "mail", "imap" ],
     "license": "MIT",
     "authors": [
+        {
+            "name": "Simeon Goranov",
+            "email": "sgoranov@gmail.com"
+        },
         {
             "name": "David de Boer",
             "email": "david@ddeboer.nl"
@@ -14,19 +18,19 @@
         }   
     ],
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.6.0",
         "ext-imap": "*",
         "ddeboer/transcoder": "~1"
     },
     "require-dev": {
         "ext-mbstring": "*",
         "ext-iconv": "*",
-        "phpunit/phpunit": "~4.0"
+        "phpunit/phpunit": "~5.5"
     },
     "autoload": {
         "psr-4": {
-            "Ddeboer\\Imap\\": "src/",
-            "Ddeboer\\Imap\\Tests\\": "tests/"
+            "sgoranov\\ImapClient\\": "src/",
+            "sgoranov\\ImapClient\\Tests\\": "tests/"
         }
     }
 }

@@ -29,6 +29,11 @@ abstract class AbstractTest extends \PHPUnit_Framework_TestCase
         static::$connection = $server->authenticate(\getenv('EMAIL_USERNAME'), \getenv('EMAIL_PASSWORD'));
     }
 
+    public static function tearDownAfterClass() {
+        static::$connection->close();
+        error_reporting(E_ALL ^ E_NOTICE);
+    }
+
     /**
      * @return Connection
      */
