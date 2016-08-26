@@ -2,8 +2,6 @@
 
 namespace sgoranov\ImapClient;
 
-use Ddeboer\Transcoder\Transcoder;
-
 class Parameters
 {
     protected $parameters = [];
@@ -36,9 +34,11 @@ class Parameters
         $decoded = '';
         $parts = imap_mime_header_decode($value);
         foreach ($parts as $part) {
-            $charset = 'default' == $part->charset ? 'auto' : $part->charset;
             // imap_utf8 doesn't seem to work properly, so use Transcoder instead
-            $decoded .= Transcoder::create()->transcode($part->text, $charset);
+            $inputEncoding = 'default' == $part->charset ? null : $part->charset;
+
+            $charset = new Charset();
+            $decoded .= $charset->convert($part->text, $inputEncoding);
         }
         
         return $decoded;

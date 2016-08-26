@@ -1,26 +1,24 @@
 IMAP library
 ============
-[![Build Status](https://travis-ci.org/ddeboer/imap.svg?branch=master)](https://travis-ci.org/ddeboer/imap)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ddeboer/imap/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ddeboer/imap/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/ddeboer/imap/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/ddeboer/imap/?branch=master)
-[![Latest Stable Version](https://poser.pugx.org/ddeboer/imap/v/stable.svg)](https://packagist.org/packages/ddeboer/imap) 
+[![Build Status](https://travis-ci.org/sgoranov/ImapClient.svg?branch=master)](https://travis-ci.org/sgoranov/ImapClient)
 
-A PHP 5.4+ library to read and process e-mails over IMAP.
+A PHP 5.6+ library to read and process e-mails over IMAP.
 
 Installation
 ------------
 
 Make sure the [PHP IMAP extension](http://php.net/manual/en/book.imap.php)
-is installed. For instance on Debian:
+is installed. For instance on Ubuntu:
 
 ```bash
-# apt-get install php5-imap
+# apt-get install php7.0-imap
 ```
+
 
 The recommended way to install the IMAP library is through [Composer](http://getcomposer.org):
 
 ```bash
-$ composer require ddeboer/imap
+$ composer require sgoranov/imap-client
 ```
 
 This command requires you to have Composer installed globally, as explained
@@ -33,11 +31,11 @@ Usage
 ### Connect and Authenticate
 
 ```php
-use Ddeboer\Imap\Server;
+use sgoranov\ImapClient\Server;
 
 $server = new Server('imap.gmail.com');
 
-// $connection is instance of \Ddeboer\Imap\Connection
+// $connection is instance of \sgoranov\ImapClient\Connection
 $connection = $server->authenticate('my_username', 'my_password');
 ```
 
@@ -64,7 +62,7 @@ over them:
 $mailboxes = $connection->getMailboxes();
 
 foreach ($mailboxes as $mailbox) {
-    // $mailbox is instance of \Ddeboer\Imap\Mailbox
+    // $mailbox is instance of \sgoranov\ImapClient\Mailbox
     printf('Mailbox %s has %s messages', $mailbox->getName(), $mailbox->count());
 }
 ```
@@ -89,16 +87,16 @@ Retrieve messages (e-mails) from a mailbox and iterate over them:
 $messages = $mailbox->getMessages();
 
 foreach ($messages as $message) {
-    // $message is instance of \Ddeboer\Imap\Message
+    // $message is instance of \sgoranov\ImapClient\Message
 }
 ```
 
 #### Searching for Messages
 
 ```php
-use Ddeboer\Imap\SearchExpression;
-use Ddeboer\Imap\Search\Email\To;
-use Ddeboer\Imap\Search\Text\Body;
+use sgoranov\ImapClient\SearchExpression;
+use sgoranov\ImapClient\Search\Email\To;
+use sgoranov\ImapClient\Search\Text\Body;
 
 $search = new SearchExpression();
 $search->addCondition(new To('me@here.com'))
@@ -113,10 +111,10 @@ $messages = $mailbox->getMessages($search);
 Search and then sort the result:
 
 ```php
-use Ddeboer\Imap\SearchExpression;
-use Ddeboer\Imap\Search\Email\To;
-use Ddeboer\Imap\Search\Text\Body;
-use Ddeboer\Imap\Sort\Size;
+use sgoranov\ImapClient\SearchExpression;
+use sgoranov\ImapClient\Search\Email\To;
+use sgoranov\ImapClient\Search\Text\Body;
+use sgoranov\ImapClient\Sort\Size;
 
 $search = new SearchExpression();
 $search->addCondition(new To('me@here.com'))
@@ -129,7 +127,7 @@ $messages = $mailbox->getMessages($search, new Size('DESC')); // sort by size
 Sort all the messages in the mailbox:
 
 ```php
-use Ddeboer\Imap\Sort\Date;
+use sgoranov\ImapClient\Sort\Date;
 
 $messages = $mailbox->getMessages(null, new Date()); // sort by date ASC
 ```
@@ -157,7 +155,7 @@ $message->isDraft();
 $message->isSeen();
 ```
 
-Get message headers as a [\Ddeboer\Imap\Message\Headers](/src/Ddeboer/Imap/Message/Headers.php) object:
+Get message headers as a [\sgoranov\ImapClient\Message\Headers](https://github.com/sgoranov/ImapClient/blob/master/src/Message/Headers.php) object:
 
 ```php
 $message->getHeaders();
@@ -200,7 +198,7 @@ Get message attachments (both inline and attached) and iterate over them:
 $attachments = $message->getAttachments();
 
 foreach ($attachments as $attachment) {
-    // $attachment is instance of \Ddeboer\Imap\Message\Attachment
+    // $attachment is instance of \sgoranov\ImapClient\Message\Attachment
 }
 ```
 
@@ -217,21 +215,22 @@ file_put_contents(
 Running the Tests
 -----------------
 
-This library is functionally tested on [Travis CI](https://travis-ci.org/ddeboer/imap)
+This library is functionally tested on [Travis CI](https://travis-ci.org/sgoranov/ImapClient)
 against the Gmail IMAP server.
 
 If you have your own IMAP (test) account, you can run the tests locally by 
 providing your IMAP (e.g., Gmail) credentials:
 
 ```bash
-$ composer install --dev
-$ EMAIL_USERNAME="your_username" EMAIL_PASSWORD="your_password" vendor/bin/phpunit
+$ composer install
+$ export EMAIL_USERNAME="your_username" 
+$ export EMAIL_PASSWORD="your_password" 
+$ vendor/bin/phpunit
 ```
 
 You can also set an `EMAIL_SERVER` variable, which defaults to `imap.gmail.com`:
 
 ```bash
-$ EMAIL_USERNAME="your_username" EMAIL_PASSWORD="your_password" EMAIL_SERVER="imap.you.com" vendor/bin/phpunit
-
+$ export EMAIL_SERVER="imap.you.com"
 ```
 

@@ -2,8 +2,8 @@
 
 namespace sgoranov\ImapClient\Message;
 
+use sgoranov\ImapClient\Charset;
 use sgoranov\ImapClient\Parameters;
-use Ddeboer\Transcoder\Transcoder;
 
 /**
  * A message part
@@ -182,10 +182,8 @@ class Part implements \RecursiveIterator
             if ($this->getType() === self::TYPE_TEXT
                 && strtolower($this->getCharset()) != 'utf-8'
             ) {
-                $this->decodedContent = Transcoder::create()->transcode(
-                    $this->decodedContent,
-                    $this->getCharset()
-                );
+                $charset = new Charset();
+                $this->decodedContent = $charset->convert($this->decodedContent, $this->getCharset());
             }
         }
 
