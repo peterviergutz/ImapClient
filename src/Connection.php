@@ -75,7 +75,7 @@ class Connection
             throw new MailboxDoesNotExistException($name);
         }
 
-        return new Mailbox($this->server . imap_utf7_encode($name), $this);
+        return new Mailbox($this->server . $name, $this);
     }
 
     /**
@@ -98,7 +98,8 @@ class Connection
      */
     public function createMailbox($name)
     {
-        if (imap_createmailbox($this->resource, $this->server . $name)) {
+        $charset = new Charset('UTF7-IMAP');
+        if (imap_createmailbox($this->resource, $this->server . $charset->convert($name))) {
             $this->mailboxNames = $this->mailboxes = null;
 
             return $this->getMailbox($name);
@@ -123,7 +124,7 @@ class Connection
     {
         if (false === imap_deletemailbox(
             $this->resource,
-            $this->server . $mailbox->getName()
+            $this->server . $mailbox->getId()
         )) {
             throw new Exception('Mailbox ' . $mailbox->getName() . ' could not be deleted');
         }
@@ -149,9 +150,10 @@ class Connection
     private function getMailboxNames()
     {
         if (null === $this->mailboxNames) {
+            $charset = new Charset();
             $mailboxes = imap_getmailboxes($this->resource, $this->server, '*');
             foreach ($mailboxes as $mailbox) {
-                $this->mailboxNames[] = imap_utf7_decode(str_replace($this->server, '', $mailbox->name));
+                $this->mailboxNames[] = $charset->convert(str_replace($this->server, '', $mailbox->name), 'UTF7-IMAP');
             }
         }
 

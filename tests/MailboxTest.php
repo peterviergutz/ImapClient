@@ -98,4 +98,12 @@ class MailboxTest extends AbstractTest
         $messages = $this->mailbox->getMessages(null, new SortTo());
         $this->assertEquals('Correct Subject', $messages->current()->getSubject());
     }
+
+    public function testUtf8Support()
+    {
+        $expectedValue = 'Тест на кирилица ' . rand(1000, 9999);
+        $mailbox = $this->getConnection()->createMailbox($expectedValue);
+        $this->assertStringStartsWith('Тест на кирилица', $mailbox->getName());
+        $this->getConnection()->deleteMailbox($mailbox);
+    }
 }

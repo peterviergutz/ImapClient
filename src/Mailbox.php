@@ -11,6 +11,7 @@ class Mailbox implements \Countable, \IteratorAggregate
     private $mailbox;
     private $name;
     private $connection;
+    private $id;
 
     /**
      * Constructor
@@ -23,6 +24,19 @@ class Mailbox implements \Countable, \IteratorAggregate
         $this->mailbox = $name;
         $this->connection = $connection;
         $this->name = substr($name, strpos($name, '}')+1);
+
+        $charset = new Charset('UTF7-IMAP');
+        $this->id = $charset->convert($this->getName());
+    }
+
+    /**
+     * Get mailbox name in UTF7-IMAP
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
