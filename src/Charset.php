@@ -18,7 +18,13 @@ class Charset
             throw new \InvalidArgumentException('The mbstring is required');
         }
 
-        $this->validEncodings = array_map('strtolower', mb_list_encodings());
+        $encodings = [];
+        foreach(mb_list_encodings() as $encoding){
+            $encodings[] = $encoding;
+            $encodings = array_merge($encodings, mb_encoding_aliases($encoding));
+        }
+
+        $this->validEncodings = array_map('strtolower', $encodings);
 
         // validate the output encoding
         if (!$this->isValidEncoding($outputEncoding)) {
